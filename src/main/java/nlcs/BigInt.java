@@ -107,7 +107,8 @@ public class BigInt {
             this.sign = this.sign + num.sign;            
         }//Cộng khác dấu
         else{
-            BigInt num1, num2;
+            BigInt num1;
+            BigInt num2;
             if(this.compare(num) == 1){
                 num1 = this;
                 num2 = num;
