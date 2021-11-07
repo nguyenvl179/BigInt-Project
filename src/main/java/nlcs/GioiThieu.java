@@ -11,7 +11,7 @@ package nlcs;
  */
 public class GioiThieu extends javax.swing.JFrame {
 
-    private MayTinh maytinh = new MayTinh(this);
+    private FormChinh formChinh = new FormChinh(this);
     
     /**
      * Creates new form NewJFrame
@@ -117,7 +117,7 @@ public class GioiThieu extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
-        maytinh.setVisible(true);
+        formChinh.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 

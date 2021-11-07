@@ -12,10 +12,10 @@ import nlcs.DbConnection;
 
 /**
  *
- * @author vkhanhqui
+ * @author nguyen
  */
 public class HistoryForm extends javax.swing.JFrame {
-    private MayTinh mainForm;
+    private FormChinh mainForm;
     
     /**
      * Creates new form HistoryForm
@@ -26,13 +26,14 @@ public class HistoryForm extends javax.swing.JFrame {
         txtpHistory.setContentType("text/html");
     }
     
-    public HistoryForm(MayTinh mainForm) {
+    public HistoryForm(FormChinh mainForm) {
         initComponents();
         this.mainForm = mainForm;
         this.setLocationRelativeTo(null);
         txtpHistory.setContentType("text/html");
         loadAllNewCalculateHistory();
     }
+    
     
     public void loadAllNewCalculateHistory(){
         txtpHistory.setText(getAllCalculateHistory());        
@@ -58,13 +59,13 @@ public class HistoryForm extends javax.swing.JFrame {
             PreparedStatement ps = DbConnection.conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                String created_date = "<b>Created date:</b> " + new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
+                String created_date = "<b>Ngày thực hiện:</b> " + new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
                         .format(rs.getTimestamp("created_date"))
                         + "<br>";
-                String valueA = "<b>ValueA:</b> " + formatValue(rs.getString("valueA")) + "<br>";
-                String operator = "<b>Operator:</b> " + rs.getString("operator") + "<br>";
-                String valueB = "<b>ValueB:</b> " + formatValue(rs.getString("valueB")) + "<br>";
-                String result = "<b>Result:</b> " + formatValue(rs.getString("result")) + "<br><br>";
+                String valueA = "<b>Giá trị 1:</b> " + formatValue(rs.getString("valueA")) + "<br>";
+                String operator = "<b>Phép tính:</b> " + rs.getString("operator") + "<br>";
+                String valueB = "<b>Giá trị 2:</b> " + formatValue(rs.getString("valueB")) + "<br>";
+                String result = "<b>Kết quả:</b> " + formatValue(rs.getString("result")) + "<br><br>";
                 response += created_date + valueA + operator
                         + valueB + result;
             }
@@ -92,15 +93,16 @@ public class HistoryForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lịch sử");
 
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
-        jLabel1.setText("Calculator History");
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        jLabel1.setText("Lịch sử");
+        jLabel1.setToolTipText("");
 
         txtpHistory.setEditable(false);
         txtpHistory.setAutoscrolls(false);
         jScrollPane2.setViewportView(txtpHistory);
 
-        btnBack.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        btnBack.setText("Back");
+        btnBack.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        btnBack.setText("Trở lại");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -112,25 +114,25 @@ public class HistoryForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(216, 216, 216)
-                            .addComponent(jLabel1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(40, 40, 40)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(314, 314, 314)
+                        .addComponent(jLabel1)))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(37, 37, 37)
                 .addComponent(jLabel1)
-                .addGap(40, 40, 40)
+                .addGap(43, 43, 43)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );

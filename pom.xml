@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>B1805794LePhucNguyen</groupId>
     <artifactId>B1805794LePhucNguyen</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.8-SNAPSHOT</version>
     <packaging>jar</packaging>
     
     <dependencies>
